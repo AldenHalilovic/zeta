@@ -2,47 +2,26 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-function Home() {
-  return (
-    <View>
-      <Text>Home</Text>
-    </View>
-  );
-}
-
-function Reorder() {
-  return (
-    <View>
-      <Text>Reorder</Text>
-    </View>
-  );
-}
-
-function Cart() {
-  return (
-    <View>
-      <Text>Cart</Text>
-    </View>
-  );
-}
-function Account() {
-  return (
-    <View>
-      <Text>Account</Text>
-    </View>
-  );
-}
+import Home from "./src/screens/HomeScreen";
+import Reorder from "./src/screens/ReorderScreen";
+import Cart from "./src/screens/CartScreen";
+import Account from "./src/screens/AccountScreen";
 
 const App = () => {
   const Tab = createBottomTabNavigator();
   return (
     <NavigationContainer style={styles.container}>
-      <Tab.Navigator>
-        <Tab.Screen name="HOME" component={Home} />
-        <Tab.Screen name="REORDER" component={Reorder} />
-        <Tab.Screen name="CART" component={Cart} />
-        <Tab.Screen name="ACCOUNT" component={Account} />
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarActiveTintColor: "#CF9FFF",
+        }}
+      >
+        <Tab.Screen name="HOME" {...Home} />
+        <Tab.Screen name="REORDER" {...Reorder} />
+        <Tab.Screen name="CART" {...Cart} />
+        <Tab.Screen name="ACCOUNT" {...Account} />
       </Tab.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
